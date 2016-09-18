@@ -17,3 +17,9 @@ import 'core-js/es6/reflect';
 
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
+
+
+import 'core-js/es6/weak-map';
+import 'core-js/es6/weak-set';
+import 'core-js/es6/typed';
+import 'core-js/es7/reflect';

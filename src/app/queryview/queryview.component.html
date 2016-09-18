@@ -1,9 +1,32 @@
-<md-card>
-    <md-card-header>
-        <md-input placeholder="Query meme:"></md-input>
-        <br>
-        <button md-button (click)="search()">Herro</button>
-    </md-card-header>
-</md-card>
+<div class="container">
+    <div class="col-md-12">
+        <!--<div class="col-md-10 col-md-offset-1">-->
+        <md-card>
+            <md-card-header>
+                <md-card-title>
+                    SELECT YOUR MEME(S):
+                </md-card-title>
+                <p-dropdown [options]="memeList" [(ngModel)]="meme" [style]="{'width':'300px'}"></p-dropdown>
+                <p-dropdown [hidden]="!compare" [options]="memeList" [(ngModel)]="altMeme" [style]="{'width':'300px'}"></p-dropdown>
+                <!--<button pButton type="button" label="Search" (click)="search()"></button>-->
+            </md-card-header>
+            <md-card-actions align="end">
+                <button md-button (click)="toggle()">TOGGLE COMPARISON</button>
+                <button md-button (click)="search()">MEME ME</button>
+            </md-card-actions>
+        </md-card>
+        <!--</div>-->
+    </div>
 
-<p-menu [model]="items"></p-menu>
+    <div class="col-md-12" [hidden]="!(data['labels'].length > 0)">
+        <p-growl [value]="msgs"></p-growl>
+
+        <div id="tableDiv">
+            <p-chart type="line" [data]="data" (onDataSelect)="selectData($event)" [options]="options"></p-chart>
+        </div>
+    </div>
+
+    <div class="col-md-2 col-md-offset-5" style="margin-top: 200px" [hidden]="!searching">
+        <md-progress-circle mode="indeterminate"></md-progress-circle>
+    </div>
+</div>
